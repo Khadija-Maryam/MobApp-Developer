@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import './ui/home1.dart';
 
 void main() {
- // debugAssertAllPaintingVarsUnset(): false,
+  // debugAssertAllPaintingVarsUnset(): false,
   runApp(MaterialApp(
-      title: 'High Grounds',
-      home: new Home(),
-      ));
+    title: 'High Grounds',
+    home: new Home1(),
+  ));
 }
-

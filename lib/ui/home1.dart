@@ -1,180 +1,100 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Container(
-            color: Colors.white70,
             child: Column(children: <Widget>[
-              HouseImageWidget(),
-              Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Column(
-                      children: <Widget>[
-                        Text("The Baker's House",
-                          style: TextStyle(
-                              color: Colors.black,
-                              decoration: TextDecoration.none,
-                              fontSize: 20),
-                        ),
-                        Text(
-                          "Dulvey, Louisiana,USA",
-                          style: TextStyle(
-                              color: Colors.black26,
-                              decoration: TextDecoration.none,
-                              fontSize: 15),
-                        )
-                      ],
-                    )),
-                    Container(
-                      padding: EdgeInsets.only(left: 250.0, right: 5.0),
-                      child: Star(),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: 
+          Image.asset('images/House1.png', fit: BoxFit.fitWidth),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                        "4.5",
-                        textDirection: TextDirection.ltr,
-                        style: TextStyle(
-                            color: Colors.black,
-                            decoration: TextDecoration.none,
-                            fontSize: 13),
-                      ),),
-                  ],
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 30.0, left: 100.0, right: 100.0, bottom: 10.0),
-                child: Row(children: <Widget>[
-                  Expanded(
-                      child: Column(
-                    children: <Widget>[
-                      CallImageWidget(),
-                      CallButton(),
-                    ],
-                  )),
-                  Expanded(
-                      child: Column(
-                    children: <Widget>[
-                      NaviImageWidget(),
-                      Container(
-                        color: Colors.blue,
-                        child: RouteButton(),),
-                    ],
-                  )),
-                  Expanded(
-                      child: Column(
-                    children: <Widget>[
-                      Container(
-                         margin: EdgeInsets.only(bottom: 5.0),
-                         child: ShareImageWidget(),),
-                      ShareButton(),
-                    ],
-                  )),
-                ]),
-              ),
-              Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0),
-                  color: Colors.white,
-                  child: Text(
-                      "The Baker family ranch is a large property located within the parishes of Dulvey, "+
-                      "Louisiana. It was owned by the Baker family so they could raise cattle and own horses. "+
-                      "The ranch's immediate area was a hidden salt-mine as well as harsh swampland. " +
-                      "The property also included a Greenhouse, Main House, Old House, Testing Area (Barn), "+
-                      "Boat House as well as the Guest House.",
-                      textAlign: TextAlign.justify,
+                      "The Baker's House",
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        decoration: TextDecoration.none,
-                      ))),
-            ])
-            ));
-  }
-}
-
-class HouseImageWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage pizzaAsset1 = AssetImage('images/House1.png');
-    Image image1 = Image(
-      image: pizzaAsset1,
-      width: 500.0,
-      height: 350.0,
+                          color: Colors.black,
+                          decoration: TextDecoration.none,
+                          fontSize: 20),
+                    ),
+                    Text(
+                      "Dulvey, Louisiana,USA",
+                      style: TextStyle(
+                          color: Colors.black26,
+                          decoration: TextDecoration.none,
+                          fontSize: 15),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Icon(Icons.star),
+                    Text(
+                      "4.5",
+                      style: TextStyle(color: Colors.black, fontSize: 13),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            Column(
+              children: <Widget>[
+                Icon(Icons.call),
+                CallButton(),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Icon(Icons.location_pin),
+                RouteButton(),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Icon(Icons.share),
+                ShareButton(), // app lost consistency here. Share Button was supposed to be an ElevatedButton according to previous patter.
+              ],
+            ),
+          ]),
+          Container(
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.only(left: 50.0, right: 50.0, top: 10.0),
+              color: Colors.white,
+              child: Text(
+                "The Baker family ranch is a large property located within the parishes of Dulvey, " +
+                    "Louisiana. It was owned by the Baker family so they could raise cattle and own horses. " +
+                    "The ranch's immediate area was a hidden salt-mine as well as harsh swampland. " +
+                    "The property also included a Greenhouse, Main House, Old House, Testing Area (Barn), " +
+                    "Boat House as well as the Guest House.",
+                textAlign: TextAlign.justify,
+              )),
+        ])),
+      ),
     );
-    return Container(child: image1);
-  }
-}
-
-class Star extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage star = AssetImage('images/star.png');
-    Image image = Image(
-      image: star,
-      width: 25.0,
-      height: 25.0,
-    );
-    return Container(child: image);
-  }
-}
-
-class NaviImageWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage pizzaAsset1 = AssetImage('images/navi.png');
-    Image image1 = Image(
-      image: pizzaAsset1,
-      width: 35.0,
-      height: 35.0,
-    );
-    return Container(child: image1);
-  }
-}
-
-class CallImageWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage pizzaAsset1 = AssetImage('images/call.png');
-    Image image1 = Image(
-      image: pizzaAsset1,
-      width: 35.0,
-      height: 35.0,
-    );
-    return Container(child: image1);
-  }
-}
-
-class ShareImageWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage pizzaAsset1 = AssetImage('images/share.png');
-    Image image1 = Image(
-      image: pizzaAsset1,
-      width: 30.0,
-      height: 30.0,
-    );
-    return Container(child: image1);
   }
 }
 
 class CallButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var button = Container(
-      color: Colors.blue,
-      child: RaisedButton(
-        child: Text("CALL",style: TextStyle(
-                        color: Colors.white,),),
-        color: Colors.lightGreen,
-        elevation: 10,
-        onPressed: () {
-          order1(context);
-        },
+    var button = ElevatedButton(
+      child: Text(
+        "CALL",
+        style: TextStyle(
+          color: Colors.white,
+        ),
       ),
+      onPressed: () {
+        order1(context);
+      },
     );
     return button;
   }
@@ -190,17 +110,13 @@ class CallButton extends StatelessWidget {
 class RouteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var button = Container(
-      color: Colors.white,
-      child: RaisedButton(
-        child: Text("ROUTE",style: TextStyle(
-                        color: Colors.white,),),
-        color: Colors.black26,
-        elevation: 10,
-        onPressed: () {
-          order2(context);
-        },
+    var button = ElevatedButton(
+      child: Text(
+        "ROUTE",
       ),
+      onPressed: () {
+        order2(context);
+      },
     );
     return button;
   }
@@ -225,22 +141,21 @@ class ShareButton extends StatelessWidget {
               height: 150,
               color: Colors.white54,
               alignment: Alignment.center,
-              child: Text('Share this mysterious place with your friends and family.',
-              style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        decoration: TextDecoration.none,
-                      )),
+              child: Text(
+                  'Share this mysterious place with your friends and family.',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    decoration: TextDecoration.none,
+                  )),
             ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ElevatedButton(
-        child: Text('SHARE'),
-        onPressed: () => _show(context),
-      ),
+    return ElevatedButton(
+      child: Text('SHARE'),
+      onPressed: () => _show(context),
     );
   }
 }
